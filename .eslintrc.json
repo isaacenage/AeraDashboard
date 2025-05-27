@@ -1,0 +1,10 @@
+{
+  "extends": "next/core-web-vitals",
+  "ignorePatterns": [
+    "public/data/*.csv",
+    "*.config.js",
+    "node_modules",
+    ".next",
+    "dist"
+  ]
+} 

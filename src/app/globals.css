@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 200, 194, 174;
+  --background-rgb: 43, 65, 65;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* Print-specific styles */
+@media print {
+  /* Hide navigation elements */
+  nav, 
+  header, 
+  .navbar, 
+  .site-logo,
+  .print-button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Reset backgrounds and colors */
+  body {
+    background: white !important;
+    color: black !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Main content container */
+  main.container {
+    padding: 20px !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* Dashboard Title */
+  h1.text-2xl {
+    font-size: 24px !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+    color: black !important;
+  }
+
+  /* Metric Cards Grid */
+  #cards-section {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px !important;
+    margin-bottom: 24px !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Individual Metric Card */
+  #cards-section > div {
+    background: white !important;
+    border: 1px solid black !important;
+    padding: 16px !important;
+    text-align: center !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Card Icon */
+  #cards-section svg {
+    width: 24px !important;
+    height: 24px !important;
+    margin-bottom: 8px !important;
+    color: black !important;
+  }
+
+  /* Card Title */
+  #cards-section h3 {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    margin: 8px 0 !important;
+    color: black !important;
+  }
+
+  /* Card Value */
+  #cards-section p {
+    font-size: 20px !important;
+    font-weight: bold !important;
+    margin: 0 !important;
+    color: black !important;
+  }
+
+  /* Table Container */
+  .overflow-x-auto {
+    margin: 24px 0 !important;
+    width: 100% !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Table Styles */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 12px !important;
+    margin-bottom: 24px !important;
+  }
+
+  th, td {
+    border: 1px solid black !important;
+    padding: 8px !important;
+    text-align: left !important;
+    color: black !important;
+  }
+
+  th {
+    font-weight: bold !important;
+    background: #f8f8f8 !important;
+  }
+
+  /* Hide charts section from browser print */
+  .chart-container,
+  #charts-section {
+    display: none !important;
+  }
+} 
