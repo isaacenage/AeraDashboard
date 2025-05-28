@@ -27,11 +27,11 @@ export interface LandbankData {
 }
 
 export const AGREEMENT_AREAS = {
-  'Royal Asia Land': 450.25,
-  'Manila Jockey Club': 300.50,
-  'Congressman Roy Loyola': 250.75,
-  'Dionido MoA': 180.25,
-  'ALI-owned lots': 59.50,
+  'Royal Asia Land': 936.45,
+  'Manila Jockey Club': 60.8712,
+  'Congressman Roy Loyola': 164.509,
+  'Dionido': 60,
+  'ALI-owned lots': 19.4225,
 };
 
 export const CHART_COLORS = {

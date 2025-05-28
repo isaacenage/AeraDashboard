@@ -2,14 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 :root {
-  --foreground-rgb: 200, 194, 174;
-  --background-rgb: 43, 65, 65;
+  /* Main Colors */
+  --bg-gradient-start: #012f34;
+  --bg-gradient-end: #045e63;
+  --card-bg: rgba(13, 50, 56, 0.4);
+  
+  /* Text Colors */
+  --text-soft: #f1f5f9;
+  --text-muted: #e0f2f1;
+  
+  /* Accent Colors */
+  --neon-aqua: #00f7ef;
+  --neon-blue: #0077b6;
+  --neon-yellow: #ffc800;
+  
+  /* Shadows */
+  --card-shadow: 0 16px 24px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 24px 32px rgba(0, 0, 0, 0.5);
+  --glow-shadow: 0 0 20px rgba(0, 247, 239, 0.15);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+@layer base {
+  body {
+    @apply min-h-screen;
+    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    color: var(--text-soft);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl p-6 transition-all duration-300;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--card-shadow);
+    border: none;
+  }
+  
+  .glass-card-hover {
+    @apply hover:translate-y-[-2px] hover:shadow-[var(--card-shadow-hover)];
+  }
+  
+  .metric-card {
+    @apply glass-card glass-card-hover flex flex-col items-center justify-center;
+  }
+  
+  .nav-link {
+    @apply text-[var(--text-soft)] hover:text-[var(--neon-aqua)] transition-colors duration-200;
+  }
+  
+  .btn {
+    @apply px-6 py-2 rounded-xl uppercase tracking-wider font-medium text-sm
+           bg-transparent text-[var(--text-soft)] 
+           hover:bg-[var(--neon-aqua)] hover:text-[var(--bg-gradient-start)]
+           transition-all duration-300 hover:shadow-[var(--glow-shadow)];
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px rgba(0, 247, 239, 0.15);
+  }
+
+  .table-cell {
+    @apply px-4 py-3 text-[var(--text-soft)] bg-[var(--card-bg)] backdrop-blur-md;
+  }
+
+  .table-header {
+    @apply table-cell font-medium text-[var(--text-muted)];
+  }
 }
 
 /* Print-specific styles */
