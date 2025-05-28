@@ -33,10 +33,14 @@ export default function CleanUpPage() {
         setData(landbankData);
         
         // Calculate clean-up specific metrics
-        const cleanupLots = (landbankData?.filter(row => row['TO BE MAPPED'] > 0)) ?? [];
+        const cleanupLots = Array.isArray(landbankData)
+          ? landbankData.filter(row => row['TO BE MAPPED'] > 0)
+          : [];
         setMetrics({
           totalLotsForCleanup: cleanupLots.length,
-          cleanedLots: (landbankData?.filter(row => row['MAPPED PARCELS'] > 0))?.length ?? 0,
+          cleanedLots: Array.isArray(landbankData)
+            ? landbankData.filter(row => row['MAPPED PARCELS'] > 0).length
+            : 0,
           pendingCleanup: cleanupLots.length,
           totalCleanupArea: (cleanupLots?.reduce((sum, row) => sum + (row['AREA (HA)'] || 0), 0)) ?? 0,
         });
