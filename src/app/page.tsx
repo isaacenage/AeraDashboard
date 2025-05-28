@@ -120,7 +120,7 @@ export default function Dashboard() {
               <InfusionGauge
                 label="RALI JVA"
                 percentage={(data
-                  .filter(row => row['LAND GROUP'] === 'RALI')
+                  ?.filter(row => row['LAND GROUP'] === 'RALI')
                   .reduce((sum, row) => sum + (row['INFUSION AREA (HA)'] || 0), 0) / 936.45) * 100}
                 color={CHART_COLORS.primary}
               />
@@ -131,7 +131,7 @@ export default function Dashboard() {
               <InfusionGauge
                 label="MJCI MoA"
                 percentage={(data
-                  .filter(row => row['LAND GROUP'] === 'MJCI')
+                  ?.filter(row => row['LAND GROUP'] === 'MJCI')
                   .reduce((sum, row) => sum + (row['INFUSION AREA (HA)'] || 0), 0) / 60.8712) * 100}
                 color={CHART_COLORS.primary}
               />
@@ -142,7 +142,7 @@ export default function Dashboard() {
               <InfusionGauge
                 label="CRL MoA"
                 percentage={(data
-                  .filter(row => row['LAND GROUP'] === 'CARMONA GAP')
+                  ?.filter(row => row['LAND GROUP'] === 'CARMONA GAP')
                   .reduce((sum, row) => sum + (row['INFUSION AREA (HA)'] || 0), 0) / 164.509) * 100}
                 color={CHART_COLORS.primary}
               />
@@ -153,7 +153,7 @@ export default function Dashboard() {
               <InfusionGauge
                 label="Dionido MoA"
                 percentage={(data
-                  .filter(row => row['LAND GROUP'] === 'SILANG GAP')
+                  ?.filter(row => row['LAND GROUP'] === 'SILANG GAP')
                   .reduce((sum, row) => sum + (row['INFUSION AREA (HA)'] || 0), 0) / 60.0) * 100}
                 color={CHART_COLORS.primary}
               />

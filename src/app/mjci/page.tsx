@@ -32,17 +32,17 @@ export default function MJCIPage() {
     const loadData = async () => {
       try {
         const landbankData = await fetchLandbankData();
-        const mjciLots = landbankData.filter(row => 
+        const mjciLots = landbankData?.filter(row => 
           row['AGREEMENT GROUP'] === 'Manila Jockey Club'
-        );
+        ) ?? [];
         setData(mjciLots);
         
         // Calculate MJCI-specific metrics
         setMetrics({
           totalMJCILots: mjciLots.length,
-          totalMJCIArea: mjciLots.reduce((sum, row) => sum + (row['AREA (HA)'] || 0), 0),
-          infusedMJCILots: mjciLots.filter(row => row['INFUSION AREA (HA)'] > 0).length,
-          infusedMJCIArea: mjciLots.reduce((sum, row) => sum + (row['INFUSION AREA (HA)'] || 0), 0),
+          totalMJCIArea: mjciLots?.reduce((sum, row) => sum + (row['AREA (HA)'] || 0), 0) ?? 0,
+          infusedMJCILots: mjciLots?.filter(row => row['INFUSION AREA (HA)'] > 0).length ?? 0,
+          infusedMJCIArea: mjciLots?.reduce((sum, row) => sum + (row['INFUSION AREA (HA)'] || 0), 0) ?? 0,
         });
       } catch (error) {
         console.error('Error loading data:', error);

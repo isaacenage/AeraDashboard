@@ -30,22 +30,22 @@ export default function ExternalGapLotsPage() {
     const loadData = async () => {
       try {
         const landbankData = await fetchLandbankData();
-        const gapLots = landbankData.filter(row => 
-          row['LOT AVAILABILITY STATUS'].includes('GAP') ||
-          row['LOT AVAILABILITY STATUS'].includes('MOA')
-        );
+        const gapLots = landbankData?.filter(row => 
+          row['LOT AVAILABILITY STATUS']?.includes('GAP') ||
+          row['LOT AVAILABILITY STATUS']?.includes('MOA')
+        ) ?? [];
         setData(gapLots);
         
         // Calculate gap lots specific metrics
-        const moaLots = gapLots.filter(row => 
-          row['LOT AVAILABILITY STATUS'].includes('MOA')
-        );
+        const moaLots = gapLots?.filter(row => 
+          row['LOT AVAILABILITY STATUS']?.includes('MOA')
+        ) ?? [];
         
         setMetrics({
           totalGapLots: gapLots.length,
-          totalGapArea: gapLots.reduce((sum, row) => sum + (row['AREA (HA)'] || 0), 0),
+          totalGapArea: gapLots?.reduce((sum, row) => sum + (row['AREA (HA)'] || 0), 0) ?? 0,
           moaSignedLots: moaLots.length,
-          moaSignedArea: moaLots.reduce((sum, row) => sum + (row['AREA (HA)'] || 0), 0),
+          moaSignedArea: moaLots?.reduce((sum, row) => sum + (row['AREA (HA)'] || 0), 0) ?? 0,
         });
       } catch (error) {
         console.error('Error loading data:', error);

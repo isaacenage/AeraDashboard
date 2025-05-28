@@ -34,17 +34,17 @@ export default function JVAInfusionPage() {
     const loadData = async () => {
       try {
         const landbankData = await fetchLandbankData();
-        const jvaData = landbankData.filter(row => 
+        const jvaData = landbankData?.filter(row => 
           row['AGREEMENT GROUP'] === 'Royal Asia Land'
-        );
+        ) ?? [];
         setData(jvaData);
         
         // Calculate JVA-specific metrics
         setMetrics({
           totalJVALots: jvaData.length,
-          infusedJVALots: jvaData.filter(row => row['INFUSION AREA (HA)'] > 0).length,
-          totalJVAArea: jvaData.reduce((sum, row) => sum + (row['AREA (HA)'] || 0), 0),
-          infusedJVAArea: jvaData.reduce((sum, row) => sum + (row['INFUSION AREA (HA)'] || 0), 0),
+          infusedJVALots: jvaData?.filter(row => row['INFUSION AREA (HA)'] > 0).length ?? 0,
+          totalJVAArea: jvaData?.reduce((sum, row) => sum + (row['AREA (HA)'] || 0), 0) ?? 0,
+          infusedJVAArea: jvaData?.reduce((sum, row) => sum + (row['INFUSION AREA (HA)'] || 0), 0) ?? 0,
         });
       } catch (error) {
         console.error('Error loading data:', error);
